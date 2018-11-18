@@ -1,21 +1,6 @@
-# mate
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# 2018-11-17
+- [x] 完成了首页的界面设计
+- [x] 完成了登陆的界面设计
+- [x] 完成了注册的界面设计
+- [x] 完成了登陆的逻辑
+- [x] 完成了注册的逻辑
