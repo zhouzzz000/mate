@@ -53,24 +53,25 @@
         clickToLogin()
         {
           var that = this;
-          $(".div-2").click(function () {
+          $(".div-1").click(function () {
             $(".div-3").animate({
-              top:'-100px'
-            },"500",function () {
-              if (that.tokenIsUse)
-              {
-                that.$message({
-                  message:'登陆成功！',
-                  type:'success',
-                  duration:1500,
-                });
-                that.$router.push({name:'main'});
-              }
-              else if (!that.isRegister) {
-                  that.isLogin = 1;
-              }
-            });
+              top: '-100px'
+            }, "500")
           });
+          setTimeout(function () {
+            if (that.tokenIsUse)
+            {
+              that.$message({
+                message:'登陆成功！',
+                type:'success',
+                duration:1000,
+              });
+              that.$router.push({name:'main'});
+            }
+            else if (!that.isRegister) {
+              that.isLogin = 1;
+            }
+          },300);
         },
         clickToRegister()
         {
