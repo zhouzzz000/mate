@@ -4,7 +4,7 @@
     <input v-model.lazy.trim="password" type="password" placeholder="Passowrd" class="input-1" />
     <span class="span-2">{{content}}</span>
     <span class="span-1" >find passowrd</span>
-    <button type="button" class="input-1 button-1"  @click="clickToLogin">Sign in</button>
+    <button type="button" class="input-1 button-1" @click="clickToLogin">Sign in</button>
     <button type="button" class="input-1 button-2" @click="clickToRe" >Register</button>
   </div>
 </template>
@@ -35,6 +35,15 @@
               loading:1
             }
         },
+        created:function(){
+          var _this = this;
+          document.onkeydown = function(e) {
+            let key = window.event.keyCode;
+            if (key == 13) {
+              _this.clickToLogin();
+            }
+          };
+        },
         methods:{
           clickToRe(){
             this.$emit('change');
@@ -51,15 +60,16 @@
                     this.$store.commit('userId',e.body.id);
                     this.$store.commit('token',e.body.token);
                     this.$cookie.set('token',e.body.token,1);
+                   this.$cookie.set('user_id',e.body.id,1);
                     this.$emit('submit',1);
-                    this.$message({
-                      message:'登陆成功！',
-                      type:'success',
-                      duration:1500,
-                    });
+                   this.$message({
+                     message:'登陆成功！',
+                     type:'success',
+                     duration:1000
+                   });
                     this.$router.push({name:"main",replace:true});
                  },(e)=>{
-                   this.$emit('submit',1);
+                   this.$emit('submit',0);
                   let code = e.body.errorCode;
                   if (code == 10000)
                   {
@@ -75,6 +85,9 @@
              }else{
                this.content = "账号或密码格式不对"
              }
+          },
+          clickToEnter(){
+            console.log('enter')
           }
         },
         watch:{

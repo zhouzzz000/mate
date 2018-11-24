@@ -6,13 +6,16 @@ import Index from './../components/pages/index'
 import Login from './../components/comm/login'
 import Register from './../components/comm/register'
 import MainPage from '../components/pages/mainpage'
+import Info from '../components/comm/info'
 import $ from 'jquery'
+// import emoji from 'jquery-emoji'
+// Vue.use(emoji);
 Vue.use(Router)
 Vue.use(VueResource)
 Vue.use($)
 Vue.use(VueCookie)
 export default new Router({
-  mode:'history',
+  // mode:'history',
   routes: [
     {
       path: '/mateweb',
@@ -44,6 +47,11 @@ export default new Router({
       path: '/mateweb/main',
       name: 'main',
       component:MainPage
+    },
+    {
+      path: '/mateweb/info',
+      name: 'info',
+      component: Info
     },
   ]
 })

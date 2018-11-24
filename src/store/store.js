@@ -9,7 +9,9 @@ const store = new Vuex.Store({
     token:'',
     userful:0,
     errCode: 0,
-    myInfo:''
+    myInfo:'',
+    friendList:'',
+    ws:''
   },
   mutations:{
       userId(state,id)
@@ -23,8 +25,16 @@ const store = new Vuex.Store({
 
       myInfo(state,info){
         this.state.myInfo = info;
-      }
+      },
 
+    friendList(state,info){
+      this.state.friendList = info;
+    },
+
+    ws(state,ws)
+    {
+      this.state.ws = ws;
+    }
   },
   actions:{
       getMyInfo(context) {

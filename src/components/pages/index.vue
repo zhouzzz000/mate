@@ -61,11 +61,11 @@
           setTimeout(function () {
             if (that.tokenIsUse)
             {
-              that.$message({
-                message:'登陆成功！',
-                type:'success',
-                duration:1000,
-              });
+              // that.$message({
+              //   message:'登陆成功！',
+              //   type:'success',
+              //   duration:1000,
+              // });
               that.$router.push({name:'main'});
             }
             else if (!that.isRegister) {
@@ -93,7 +93,7 @@
         {
           this.loadingMsg = '注册中';
           this.loading = tag;
-        }
+        },
       }
     }
 </script>

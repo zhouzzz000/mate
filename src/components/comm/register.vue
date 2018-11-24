@@ -27,6 +27,15 @@
 
     export default {
         name: "register",
+        created:function(){
+          var _this = this;
+          document.onkeydown = function(e) {
+            let key = window.event.keyCode;
+            if (key == 13) {
+              _this.clickToRegister();
+            }
+          };
+        },
         data() {
             return {
              content:'',
@@ -50,9 +59,9 @@
                 password:this.password,
                 nick:this.nick,
                 email:this.email,
-                sex:1,
-                age:10,
-                avator:1
+                sex:0,
+                age:0,
+                avator:3
               };
               this.$emit('submit',1);
               this.$http.post(this.$store.state.url+'/user/sign_in',data).then(
@@ -60,15 +69,16 @@
                   this.$store.commit('userId',e.body.id);
                   this.$store.commit('token',e.body.token);
                   this.$cookie.set('token',e.body.token,1);
+                  this.$cookie.set('user_id',e.body.id,1);
                   this.$emit('submit',0);
                   this.$message({
                     message:'注册成功!',
                     type:'success',
                     duration:1500,
                   })
-                  this.$router.push({path:"/main",replace:true});
+                  this.$router.push({name:"info",replace:true});
                 },(e)=>{
-                  this.$emit('submit',1);
+                  this.$emit('submit',0);
                   let code = e.body.errorCode;
                   if (code == 10001)
                   {
